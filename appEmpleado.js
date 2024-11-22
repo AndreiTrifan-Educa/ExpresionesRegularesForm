@@ -141,8 +141,8 @@ function ordenarEmail(){
 
 function validarDNI(dni) {
     const letras = "TRWAGMYFPDXBNJZSQVHLCKE"; 
-    const numeros = dni.slice(0,-1); // Extrae los números
-    const letra = dni.slice(-1).toUpperCase(); // Extrae la última letra y la convierte en mayúscula
+    const numeros = dni.slice(0,-1); //El num negativo significa que empieza a contar por el final
+    const letra = dni.slice(-1).toUpperCase(); //Extrae la última letra y la convierte en mayúscula
 
     if (!/^\d{8}$/.test(numeros)) {
         return false;
