@@ -139,16 +139,27 @@ function ordenarEmail(){
     }
 }
 
+function validarDNI(dni) {
+    const letras = "TRWAGMYFPDXBNJZSQVHLCKE"; 
+    const numeros = dni.slice(0, -1); // Extrae los números
+    const letra = dni.slice(-1).toUpperCase(); // Extrae la última letra y la convierte en mayúscula
+
+    if (!/^\d{8}$/.test(numeros)) {
+        return false;
+    }
+
+    const indice = parseInt(numeros, 10) % 23;
+    const letraCorrecta = letras[indice];
+
+    return letra === letraCorrecta;
+}
+
 
 function validarEmail(email){
     const expReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return expReg.test(email);
 }
-function validarDNI(dni){
-    const expReg = /^\d{8}[A-Za-z]$/;
-    return expReg.test(dni);
 
-}
 
 construirTabla(empleados);
 document.getElementById("nombre").addEventListener("click", ordenarNombre);
@@ -159,14 +170,15 @@ document.getElementById("sueldo").addEventListener("click", ordenarSueldo);
 
 document.querySelector("form").addEventListener("submit", function(evento) {
     evento.preventDefault(); //Evita que se actualice la página
-    const dni = document.getElementById("dniF").value;
-    const nombre = document.getElementById("nombreF").value;
-    const apellido = document.getElementById("apellidoF").value;
-    const nacimiento = document.getElementById("fecha_nacimientoF").value;
-    const sueldo = parseFloat(document.getElementById("sueldoF").value);
+    const dniForm = document.getElementById("dniF").value;
+    const nombreForm = document.getElementById("nombreF").value;
+    const apellidoForm = document.getElementById("apellidoF").value;
+    const emailForm = document.getElementById("emailF").value;
+    const nacimientoForm = document.getElementById("fecha_nacimientoF").value;
+    const sueldoForm = parseFloat(document.getElementById("sueldoF").value);
 
-    if(validarEmail(emailF) && validarDNI(dniF)){
-        const nuevoEmpleado = new Empleado(dni, nombre, apellido, nacimiento, sueldo);
+    if(validarEmail(emailForm) && validarDNI(dniForm)){
+        const nuevoEmpleado = new Empleado(dniForm, nombreForm, apellidoForm, emailForm, nacimientoForm, sueldoForm);
         empleados.push(nuevoEmpleado);
 
         construirTabla(empleados);
@@ -175,7 +187,5 @@ document.querySelector("form").addEventListener("submit", function(evento) {
                            //queremos insertar otra persona
     }else{
         alert("Datos incorrectos");
-    }
-    
-    
+    } 
 });
