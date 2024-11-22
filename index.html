@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="empleado.css">
+    <title>App Empleados</title>
+</head>
+<body>
+    <form action="/submit" method="post">
+        <label for="dniF">DNI:</label>
+        <input type="text" id="dniF" name="dniF" required><br>
+        
+        <label for="nombreF">Nombre:</label>
+        <input type="text" id="nombreF" name="nombreF" required><br>
+        
+        <label for="apellidoF">Apellido:</label>
+        <input type="text" id="apellidoF" name="apellidoF" required><br>
+
+        <label for="emailF">Email:</label>
+        <input type="text" id="emailF" name="emailF" required><br>
+        
+        <label for="fecha_nacimientoF">Fecha de Nacimiento:</label>
+        <input type="text" id="fecha_nacimientoF" name="fecha_nacimientoF" required><br>
+        
+        <label for="sueldo"F>Sueldo:</label>
+        <input type="number" id="sueldoF" name="sueldoF" step="0.01" required><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+      
+    <table cellspacing="0" cellpadding="10">
+        <tr>
+            <th id="dni">DNI</th>
+            <th id="nombre">Nombre</th>
+            <th id="apellido">Apellido</th>
+            <th id="email">Email</th>
+            <th id="nacimiento">Año nacimiento</th>
+            <th id="sueldo">Sueldo</th>
+        </tr>
+        <tbody id="tabla">
+        </tbody>
+    </table>
+    <script src="appEmpleado.js"></script>
+</body>
+</html>
