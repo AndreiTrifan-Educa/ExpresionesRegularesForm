@@ -141,14 +141,14 @@ function ordenarEmail(){
 
 function validarDNI(dni) {
     const letras = "TRWAGMYFPDXBNJZSQVHLCKE"; 
-    const numeros = dni.slice(0, -1); // Extrae los números
+    const numeros = dni.slice(0,-1); // Extrae los números
     const letra = dni.slice(-1).toUpperCase(); // Extrae la última letra y la convierte en mayúscula
 
     if (!/^\d{8}$/.test(numeros)) {
         return false;
     }
 
-    const indice = parseInt(numeros, 10) % 23;
+    const indice = parseInt(numeros)%23;
     const letraCorrecta = letras[indice];
 
     return letra === letraCorrecta;
