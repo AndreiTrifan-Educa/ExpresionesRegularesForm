@@ -189,3 +189,20 @@ document.querySelector("form").addEventListener("submit", function(evento) {
         alert("Datos incorrectos");
     } 
 });
+
+document.getElementById("emailF").addEventListener("blur", (e) => {
+    let emailForm = e.target.value;
+    if(validarEmail(emailForm)){
+        document.getElementById("emailF").setAttribute("style", "border: green 1px solid");
+    }else{
+        document.getElementById("emailF").setAttribute("style", "border: red 1px solid");
+    }
+});
+
+document.getElementById("dniF").addEventListener("blur", () => {
+    if(validarDNI(dniForm)){
+        document.getElementById("dniF").setAttribute("style", "border: green 1px solid");
+    }else{
+        document.getElementById("dniF").setAttribute("style", "border: red 1px solid");
+    }
+});
